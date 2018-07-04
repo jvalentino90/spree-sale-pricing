@@ -6,8 +6,6 @@ module Spree
     accepts_nested_attributes_for :calculator
     validates :calculator, :presence => true
 
-    attr_accessible :value, :start_at, :end_at, :enabled
-
     scope :active, lambda {
       where("enabled = 't' AND (start_at <= ? OR start_at IS NULL) AND (end_at >= ? OR end_at IS NULL)", Time.now, Time.now)
     }
